@@ -10,6 +10,7 @@
       margin: 0;
       background: #f4f4f4;
       color: #222;
+      line-height: 1.6;
     }
     header {
       background: #0077cc;
@@ -21,39 +22,34 @@
       background: #005fa3;
       padding: 10px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
       color: white;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .container {
       max-width: 900px;
       margin: auto;
       padding: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
       background: white;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 5px;
     }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background: #0077cc;
-      color: white;
-    }
-    .footer {
-      margin-top: 40px;
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 15px;
+    h2 {
+      color: #005fa3;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
     }
     .tagline {
       font-size: 18px;
@@ -61,12 +57,24 @@
       opacity: 0.9;
     }
     
+    /* Highlight Box Style */
+    .info-box {
+      background-color: #e7f3fe;
+      border-left: 6px solid #2196F3;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      padding: 15px;
+      font-size: 1.05em;
+    }
+
+    /* Responsive Iframe Container */
     .sheet-container {
       width: 100%;
       overflow-x: auto; 
       -webkit-overflow-scrolling: touch; 
       border: 1px solid #ddd; 
-      background: white;
+      background: #fff;
+      margin-top: 15px;
     }
     
     iframe {
@@ -77,10 +85,37 @@
       min-width: 600px; 
     }
 
-   
+    /* Footer Styles */
+    .footer-contacts {
+      background: #222;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 15px;
+    }
+    .contact-list {
+      margin-top: 15px;
+      display: inline-block;
+      text-align: left;
+    }
+    .contact-item {
+      margin-bottom: 8px;
+    }
+    .contact-item a {
+      color: #ffd700; 
+      text-decoration: none;
+    }
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
       iframe {
         height: 500px;
+      }
+      nav a {
+        display: block;
+        margin: 5px 0;
       }
     }
   </style>
@@ -89,78 +124,63 @@
 
 <header>
   <h1>PriceCheck PK</h1>
-  <p class="tagline">Helping customers know fair market prices</p>
+  <p class="tagline">Bridging the gap between Market Reality and Government Rates</p>
 </header>
 
 <nav>
   <a href="#home">Home</a>
-  <a href="#prices">Price List</a>
+  <a href="#market-prices">Market Prices</a>
+  <a href="#gov-prices">Govt Rates</a>
   <a href="#about">About</a>
 </nav>
 
 <div class="container" id="home">
   <h2>Welcome!</h2>
-  <p>Welcome to PriceCheck PK — a student-led initiative created to promote fair pricing and transparency in Pakistan. Many shopkeepers change prices based on the customer, which leads to overcharging and confusion. To help solve this, we have started collecting and listing the actual market prices of everyday essential products like meat, poultry, vegetables, and fruits. Our goal is to give people a clear idea of fair prices so they can shop with confidence and avoid being exploited. This platform is just the beginning, and we hope to expand it with more categories over time. </p>
+  <p>Welcome to <strong>PriceCheck PK</strong> — a student-led initiative created to promote fair pricing and transparency in Pakistan.</p>
+  
+  <div class="info-box">
+    <strong>💡 Why compare?</strong> <br>
+    By knowing about the <strong>average rates in the market</strong> and the official <strong>government rates</strong>, you can easily identify when someone tries to overcharge you.
+  </div>
+
+  <p>We collect data from actual market surveys and official government price lists to give you a clear picture of everyday essential prices like meat, poultry, vegetables, and fruits. </p>
 </div>
 
-<div class="container" id="prices">
-  <h2>Price List</h2>
-  <p>The prices listed below are updated regularly and are taken directly from the official price lists released by the government to ensure accuracy and fairness. </p>
+<div class="container" id="market-prices">
+  <h2>🛒 Current Market Prices</h2>
+  <p>The prices listed below are collected directly from local markets by our team to reflect the average rates you are likely to pay at the shop counter.</p>
 
   <div class="sheet-container">
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRub5yAjM10C3j5frsI82Qt42xCQNymnLQwnqCjcZpyNdHRSrsQ1SgZ8D_G9AtnJ2egiZDta8n-Sb3V/pubhtml?widget=true&amp;headers=false"></iframe>
   </div>
-  <p style="font-size: 0.9em; color: #666; margin-top: 5px;"></p>
+</div>
+
+<div class="container" id="gov-prices">
+  <h2>🏛️ Official Government Rates</h2>
+  <p>These are the official rates released by the government (DC Rates). Compare these against the market prices above to spot discrepancies.</p>
+
+  <div class="sheet-container">
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT1Z9rFZslhc-pORxXgKORK43TkeoDQ3azacNr1Oj1bPH466gqbUiyPNfy1QZyiv8aULAXNLJsFTuVs/pubhtml?widget=true&amp;headers=false"></iframe>
+  </div>
 </div>
 
 <div class="container" id="about">
   <h2>About This Project</h2>
-  <p>This project is created by students to highlight the social issue of unfair pricing in Pakistan. The goal is to promote transparency and help people make informed purchases. Created by Muhammad Habib, Muhammad Umair & Abdurehman</p>
+  <p>This project is created by students to highlight the social issue of unfair pricing in Pakistan. The goal is to promote transparency and help people make informed purchases.</p>
+  <p><strong>Created by:</strong> Muhammad Habib, Muhammad Umair & Abdurehman</p>
 </div>
-
-
-
-<style>
-  .footer-contacts {
-    background: #222;
-    color: #fff;
-    padding: 18px 20px;
-    text-align: center;
-    font-size: 15px;
-  }
-  .footer-contacts .emails {
-    margin-top: 8px;
-    display: inline-block;
-    text-align: left;
-  }
-  .footer-contacts a {
-    color: #ffd700; 
-    text-decoration: none;
-    display: block;
-    margin: 4px 0;
-  }
-  .footer-contacts a:hover {
-    text-decoration: underline;
-  }
-</style>
 
 <div class="footer-contacts" aria-label="Contact emails">
-  <div>Incase of any mistake made by our team contact us:</div>
-  <div>
-    <p>
-    Muhammad Habib — mxhcorp@gmail.com<br>
-    Muhammad Umair — mumairsaleemisfg@gmail.com<br>
-    Abdur Rehman — abdurehmanaamer99@gmail.com
-    </p>
-
-    
+  <div>In case of any mistake or suggestion, please contact us:</div>
+  <div class="contact-list">
+    <div class="contact-item">Muhammad Habib — <a href="mailto:mxhcorp@gmail.com">mxhcorp@gmail.com</a></div>
+    <div class="contact-item">Muhammad Umair — <a href="mailto:mumairsaleemisfg@gmail.com">mumairsaleemisfg@gmail.com</a></div>
+    <div class="contact-item">Abdur Rehman — <a href="mailto:abdurehmanaamer99@gmail.com">abdurehmanaamer99@gmail.com</a></div>
   </div>
-  <div style="margin-top:10px; font-size:13px; color:#ddd;">  </div>
+  <div style="margin-top:20px; font-size:13px; color:#777;">&copy; 2025 PriceCheck PK. All Rights Reserved.</div>
 </div>
 
-
 </body>
-
 </html>
 
 
